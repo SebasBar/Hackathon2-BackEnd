@@ -70,3 +70,19 @@ exports.deleteExperience = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.experienceEmployee = async (req, res, next) => {
+  try {
+    const employeeId = Number(req.params.employeeId);
+    const { experienceId } = req.body;
+    const experienceUpdate = await client.experience.update({
+      where: { id: experienceId },
+      data: {
+        employee: { connect: { id: employeeId } },
+      },
+    });
+    res.status(200).json(experienceUpdate);
+  } catch (err) {
+    next(err);
+  }
+};

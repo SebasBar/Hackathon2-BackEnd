@@ -25,9 +25,9 @@ model Employee {
 }
 
 model ContactInfo {
-  id         Int      @id @default(autoincrement())
-  employee   Employee @relation(fields: [employeeId], references: [id])
-  employeeId Int
+  id         Int       @id @default(autoincrement())
+  employee   Employee? @relation(fields: [employeeId], references: [id])
+  employeeId Int?
   email      String
   phone      String
   address    String

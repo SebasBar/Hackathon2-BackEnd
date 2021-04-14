@@ -1,7 +1,6 @@
 const router = require("express").Router();
 
-const skillRoutes = require("./skill/skill.routes");
-const skillTypeRoutes = require("./skill/skilltypes.routes");
+const contactInfoRoutes = require("./contactInfo.routes");
 // const educationRoutes = require("./education.routes");
 // const wishRoutes = require("./wish.routes");
 const experienceRoutes = require("./experience.routes");
@@ -14,9 +13,8 @@ router.get("/", (req, res, next) => {
 });
 
 router.use("/employee", employeeRoutes);
-router.use("/skill", skillRoutes);
-router.use("/skilltype", skillTypeRoutes);
 router.use("/experience", experienceRoutes);
+router.use("/contactinfo", contactInfoRoutes);
 // router.use("/education", educationRoutes);
 // router.use("/wish", wishRoutes);
 // router.use("/intrests", intrestsRoutes);

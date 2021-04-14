@@ -59,51 +59,51 @@ exports.createEmployee = async (req, res, next) => {
       //select: { experience: { industry: "", network: "", clients: "" } },
       //select: { wish: { project: "", further_education: "" } },
     });
-    const newEmployeeContactInfo = await client.contactInfo.create({
-      data: {
-        email: "",
-        phone: "",
-        address: "",
-        employee: { connect: { id: newEmployee.id } },
-      },
-    });
-    const newEmployeeCompanyInfo = await client.companyInfo.create({
-      data: {
-        location: "",
-        department: "",
-        position: "",
-        employee: { connect: { id: newEmployee.id } },
-      },
-    });
-    const newEmployeeExperience = await client.experience.create({
-      data: {
-        industry: [],
-        network: [],
-        clients: [],
-        employee: { connect: { id: newEmployee.id } },
-      },
-    });
-    const newEmployeeIntrests = await client.intrests.create({
-      data: {
-        hobbies: "",
-        special_skills: "",
-        employee: { connect: { id: newEmployee.id } },
-      },
-    });
-    const createdEmployee = await client.employee.findUnique({
-      where: { id: newEmployee.id },
-      include: {
-        experience: true,
-        skill: true,
-        wish: true,
-        education: true,
-        intrests: true,
-        companyInfo: true,
-        contactInfo: true,
-      },
-    });
+    // const newEmployeeContactInfo = await client.contactInfo.create({
+    //   data: {
+    //     email: "",
+    //     phone: "",
+    //     address: "",
+    //     employee: { connect: { id: newEmployee.id } },
+    //   },
+    // });
+    // const newEmployeeCompanyInfo = await client.companyInfo.create({
+    //   data: {
+    //     location: "",
+    //     department: "",
+    //     position: "",
+    //     employee: { connect: { id: newEmployee.id } },
+    //   },
+    // });
+    // const newEmployeeExperience = await client.experience.create({
+    //   data: {
+    //     industry: [],
+    //     network: [],
+    //     clients: [],
+    //     employee: { connect: { id: newEmployee.id } },
+    //   },
+    // });
+    // const newEmployeeIntrests = await client.intrests.create({
+    //   data: {
+    //     hobbies: "",
+    //     special_skills: "",
+    //     employee: { connect: { id: newEmployee.id } },
+    //   },
+    // });
+    // const createdEmployee = await client.employee.findUnique({
+    //   where: { id: newEmployee.id },
+    //   include: {
+    //     experience: true,
+    //     skill: true,
+    //     wish: true,
+    //     education: true,
+    //     intrests: true,
+    //     companyInfo: true,
+    //     contactInfo: true,
+    //   },
+    // });
 
-    res.status(200).json(createdEmployee);
+    res.status(200).json(newEmployee);
   } catch (err) {
     next(err);
   }
